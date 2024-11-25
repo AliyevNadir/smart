@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block title %}Home{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'book/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-3" >
+            {% include 'partials/_categories.html' %}
+        </div>
+        <div class="col-9" >
+            {% for book in books %}
+                {% if book.is_home %}
+                    {% include 'book/partials/_book.html' %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+    <h1>Home page</h1>
+{% endblock %}
+
+{% block js_files %}
+    <script src="{% static 'book/js/script.js' %}"></script>
+{% endblock %}
